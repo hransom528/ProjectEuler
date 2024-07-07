@@ -6,7 +6,7 @@ OBJS = $(basename $(SOURCES))
 all: $(OBJS)
 
 $(OBJS): %: %.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $< -lm
 	mv $@ bin/
 
 show:
