@@ -1,13 +1,17 @@
 CC = gcc
 CFLAGS = -g -Wall
-SOURCES = $(wildcard ./*.c)
-OBJS = 
+SOURCES = $(wildcard src/*.c)
+OBJS = $(basename $(SOURCES))
 
-*.o : *.c
-	gcc -o 
+all: $(OBJS)
+
+$(OBJS): %: %.c
+	$(CC) $(CFLAGS) -o $@ $<
+	mv $@ bin/
 
 show:
 	echo $(SOURCES)
+	echo $(OBJS)
 
 clean:
 	rm -rf *.o *.exe
